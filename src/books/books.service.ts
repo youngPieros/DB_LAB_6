@@ -20,7 +20,22 @@ export class BooksService {
     return book;
   }
   async getAllBooks(): Promise<BookEntity[]> {
-    // const user: UserEntity = await UserEntity.findOne({where: {id: 2}, relations: ['books']});
     return BookEntity.find();
+  }
+  async removeBook(bookID: number): Promise<BookEntity> {
+    const book = await BookEntity.findOne({
+      id: bookID,
+    });
+    return await book.remove();
+  }
+  async changeBook(
+    bookID: number,
+    bookDetails: CreateBookDto,
+  ): Promise<BookEntity> {
+    const book = await BookEntity.findOne({
+      id: bookID,
+    });
+    book.name = bookDetails.name;
+    return await book.save();
   }
 }
