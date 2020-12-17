@@ -4,14 +4,17 @@ import {
   Column,
   BaseEntity,
   ManyToOne,
-  ManyToMany,
-  JoinTable,
 } from 'typeorm';
+import TaskEntity from './task.entity';
 
 @Entity()
-export default class GenreEntity extends BaseEntity {
+export default class TaskCategoryEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   type: string;
+
+  @ManyToOne((type) => TaskEntity, (task) => task.category)
+  task: TaskEntity;
 }

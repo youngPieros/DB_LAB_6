@@ -40,20 +40,6 @@ export class UserController {
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @Get('books')
-  @ApiResponse({ status: 200, description: 'get all books of the user' })
-  @ApiQuery({
-    name: 'userID',
-    required: true,
-    type: Number,
-    description: 'id of the user that you want see their books',
-  })
-  getBooks(@Query('userID') userID: number) {
-    return this.usersServices.getBooksOfUser(userID);
-  }
-
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
   @Delete()
   @ApiResponse({ status: 200, description: 'remove user' })
   removeGenre(@Query('userID') userID: number) {

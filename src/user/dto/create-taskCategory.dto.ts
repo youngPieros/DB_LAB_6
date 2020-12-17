@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export default class CreateUserDto {
+export default class CreateTaskCategoryDto {
   @ApiProperty({
-    description: 'Name Of User',
+    description: 'Category Name',
   })
   readonly name: string;
 }
